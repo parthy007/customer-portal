@@ -1,0 +1,28 @@
+.customer-card{
+    padding: 2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.customer-card:hover{
+    background-color: #181818;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.selected{
+    border-right: .5rem solid #eb5939;
+}
+
+.customer-name{
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.cutomer-title {
+    color: #b7ab9892;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

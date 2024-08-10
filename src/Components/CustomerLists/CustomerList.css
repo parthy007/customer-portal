@@ -1,0 +1,8 @@
+.customer-cards{
+    width: 30vw;
+    min-height: calc(100vh - 7vh);
+    overflow-y: scroll;
+}
+.customer-cards::-webkit-scrollbar{
+    display: none;
+}
