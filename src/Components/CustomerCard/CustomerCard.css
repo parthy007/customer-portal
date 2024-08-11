@@ -10,6 +10,7 @@
 
 .selected{
     border-right: .5rem solid #eb5939;
+    background-color: #181818;
 }
 
 .customer-name{
