@@ -7,30 +7,23 @@ const CustomerDetails: React.FC<CustomerDetailsProps> = ({ customer }) => {
   const [photos, setPhotos] = useState<string[]>([]);
 
   useEffect(() => {
-
+    const fetchPhotos = async () => {
+      const randomTerm = randomSearchTerms[Math.floor(Math.random() * randomSearchTerms.length)];
+      try {
+        const response = await fetch(`https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${randomTerm}&per_page=9`);
+        const data = await response.json();
+        setPhotos(data.hits.map((hit: PixabayPhoto) => hit.largeImageURL));
+      } catch (error) {
+        console.log("Error fetching photos: ", error);
+      }
+    };
+  
     fetchPhotos();
-    const interval = setInterval(() => {
-      fetchPhotos();
-    }, 10000);
-
+    const interval = setInterval(fetchPhotos, 10000);
+  
     return () => clearInterval(interval);
   }, [customer]);
-
-  const fetchPhotos = async () => {
-    const randomTerm =
-      randomSearchTerms[Math.floor(Math.random() * randomSearchTerms.length)];
-
-    try {
-      const response = await fetch(
-        `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${randomTerm}&per_page=9`
-      );
-
-      const data = await response.json();
-      setPhotos(data.hits.map((hit: PixabayPhoto) => hit.largeImageURL));
-    } catch (error) {
-      console.log("Error fetching photos: ", error);
-    }
-  };
+  
 
   return (
     <div className="customer-detail">
